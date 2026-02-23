@@ -32,7 +32,6 @@ public sealed class OfficialEventDrivenServer : IRemoteClipboardServer, IOfficia
         _testAliveHelper = new TestAliveHelper(TestConnectionAsync);
         _testAliveHelper.TestSuccessed += OnTestAliveSuccessed;
         _serverHelper.ExceptionOccurred += OnServerHelperExceptionOccurred;
-        _testAliveHelper.Restart();
         _serverAdapter.ServerDisconnected += ServerDisconnected;
         _serverAdapter.ServerConnected += ServerConnected;
 
@@ -161,6 +160,7 @@ public sealed class OfficialEventDrivenServer : IRemoteClipboardServer, IOfficia
         try
         {
             _serverAdapter.ApplyConfig();
+            _serverHelper.InitializeAsync();
         }
         catch (Exception ex)
         {

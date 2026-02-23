@@ -61,13 +61,13 @@ public sealed class PollingDrivenServer : IRemoteClipboardServer
 
         _testAliveHelper = new TestAliveHelper(TestConnectionAsync);
         _testAliveHelper.TestSuccessed += ResumePolling;
-        StartTestAliveBackgroudService();
     }
 
     public void OnSyncConfigChanged(SyncConfig syncConfig)
     {
         _syncConfig = syncConfig;
         _serverAdapter.ApplyConfig();
+        _storageHelper.InitializeAsync();
         StartTestAliveBackgroudService();
     }
 

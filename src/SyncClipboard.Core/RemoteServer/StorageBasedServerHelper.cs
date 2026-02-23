@@ -26,11 +26,9 @@ internal class StorageBasedServerHelper
         _logger = sp.GetRequiredService<ILogger>();
         _trayIcon = sp.GetRequiredService<ITrayIcon>();
         _profileEnv = sp.GetRequiredService<IProfileEnv>();
-
-        InitializeAsync();
     }
 
-    private async void InitializeAsync()
+    public async void InitializeAsync()
     {
         try
         {
